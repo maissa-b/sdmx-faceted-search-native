@@ -4,12 +4,9 @@ import SideMenu from 'react-native-side-menu';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { search } from '../../actions/dataflows';
+import { Card, ListItem, Button } from 'react-native-elements'
 import { getFacets } from '../../selectors';
-import {
-  Text,
-  View,
-  ScrollView,
-} from 'react-native';
+import { View, ScrollView } from 'react-native';
 import SidePanel from '../SidePanel';
 import { styles } from './stylesheet';
 
@@ -17,7 +14,9 @@ const App = ({ dataflows, facets, search: doSearch }) => (
   <SideMenu edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch}/>}>
     <View style={styles.app}>
       <ScrollView>
-        {dataflows.map((dataflow, index) => <Text key={index}>{dataflow.name[0]}</Text>)}
+        <Card containerStyle={{padding: 0}}>
+          {dataflows.map(dataflow => <ListItem key={dataflow.id} title={dataflow.name[0]} subtitle={dataflow.description[0]} />)}
+        </Card>
       </ScrollView>
     </View>
   </SideMenu>
