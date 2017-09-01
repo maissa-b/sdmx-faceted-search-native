@@ -1,0 +1,28 @@
+{
+    "en": {
+        "search.infos": "Dataflows found",
+        "params.language": "Language",
+        "searchbar.placeholder": "Search in {searchFields} fields...",
+        "search.tips.header": "Search tips",
+        "search.tip.spelling": "Check that the spelling of keywords is correct",
+        "search.tip.keywords": "Use different keywords",
+        "search.tip.filters": "Remove filters to broaden your search",
+        "category.header": "Category",
+        "frequency.header": "Frequency",
+        "interest_rate_type.header": "Interest Rate Type",
+        "reference_area.header": "Reference Area"
+    },
+    "fr": {
+        "search.infos": "Dataflows trouvés",
+        "params.language": "Langue",
+        "searchbar.placeholder": "Rechercher sur les champs {searchFields} ...",
+        "search.tips.header": "Astuces de recherche",
+        "search.tip.spelling": "Vérifiez que l orthographe des mots-clés est correcte",
+        "search.tip.keywords": "Utilisez des mots-clés différents",
+        "search.tip.filters": "Supprimez les filtres pour élargir votre recherche",
+        "category.header": "Catégories",
+        "frequency.header": "Fréquence",
+        "interest_rate_type.header": "Type Taux Intéret",
+        "reference_area.header": "Zone Géographique"
+    }
+}
