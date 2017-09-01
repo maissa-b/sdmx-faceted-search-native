@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  Text,
-  View,
-  ScrollView,
-} from 'react-native';
+import { View, ScrollView } from 'react-native';
+import { Card, ListItem, Button } from 'react-native-elements'
 
 import { styles } from './stylesheet';
 
 const App = ({ dataflows }) => (
-  <View style={styles.app}>
+  <View>
     <ScrollView>
-      {dataflows.map((dataflow, index) => <Text key={index}>{dataflow.name[0]}</Text>)}
+      <Card containerStyle={{padding: 0}}>
+        {dataflows.map(dataflow => <ListItem key={dataflow.id} title={dataflow.name[0]} subtitle={dataflow.description[0]} />)}
+      </Card>
     </ScrollView>
   </View>
 );
