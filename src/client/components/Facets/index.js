@@ -3,14 +3,22 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { compose, filter, map } from 'ramda';
 import { CATEGORY, DIMENSION } from '../../dataflows';
-import styles from './styleSheet';
+import Category from './category';
+import Dimension from './dimension';
+import { styles } from './styleSheet';
 
 const getFacetComponent =  search => ({ type, buckets, name, value }) => {
-   return (
-      <View style={styles.facets}>
+  const handleClick = facetName => facetValue => search({ facets: { [facetName]: facetValue } });
+   switch (type) {
+    case CATEGORY:
+      return <Category key={name} onClick={handleClick(name)} value={value}/>
+    case DIMENSION:
+      return <Dimension key={name} buckets={buckets} name={name} onClick={handleClick(name)} value={value}/>
+    default:
+      return (<View key={name} style={styles.facets}>
         <Text style={styles.name}>{name}</Text>
-      </View>
-    )
+      </View>);
+  }
 };
 
 const Facets = ({ facets, search }) => {
