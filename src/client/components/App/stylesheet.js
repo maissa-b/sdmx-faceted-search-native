@@ -5,6 +5,8 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
     backgroundColor: '#fff',
+    borderColor: 'rgb(200,200,200)',
+    borderWidth: 1,
   },
   card: {
     display: 'flex',

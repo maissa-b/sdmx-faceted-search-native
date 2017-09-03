@@ -11,7 +11,7 @@ const getFacetComponent =  search => ({ type, buckets, name, value }) => {
   const handleClick = facetName => facetValue => search({ facets: { [facetName]: facetValue } });
    switch (type) {
     case CATEGORY:
-      return <Category key={name} onClick={handleClick(name)} value={value}/>
+      return <Category key={name} domain={buckets} name={name} onClick={handleClick(name)} value={value}/>
     case DIMENSION:
       return <Dimension key={name} buckets={buckets} name={name} onClick={handleClick(name)} value={value}/>
     default:
