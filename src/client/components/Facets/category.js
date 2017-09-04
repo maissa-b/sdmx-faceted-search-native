@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { List, ListItem } from 'react-native-elements';
 import { styles } from './styleSheet';
 
 const reduceIndexed = addIndex(reduce);
@@ -10,7 +11,7 @@ const reduceIndexed = addIndex(reduce);
 const TreeView = ({ nodes, onNodeCollapse, onNodeExpand, onNodeClick }) => (
   <View>
     {map(node =>
-      <View onClick={onNodeClick} key={node.id} style={styles.label}>
+      <View onClick={onNodeClick} key={node.id} style={styles.categoryLabel}>
         <View style={styles.labelIconContainer}>
           <Icon name="chevron-right" size={10} color="rgb(118, 134, 148)" />
           <Icon name={node.iconName} size={10} color="rgb(79, 119, 255)" />

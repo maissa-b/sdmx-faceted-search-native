@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { SearchBar } from 'react-native-elements'
 import { styles } from  './styleSheet';
 
-class SearchBar extends Component {
+class SearchBarComponent extends Component {
   state = {
     text: '',
   }
@@ -13,28 +14,24 @@ class SearchBar extends Component {
     const { search } = this.props;
     const { text } = this.state;
     return (
-      <View style={styles.searchBarContainer}>
-        <View style={styles.searchIconContainer}><Icon name="search" size={20} color="white" /></View>
-        <View style={styles.searchBar}>
-          <TextInput
-            style={styles.searchBarInput}
-            onChangeText={
-              (text) => {
-                search({ search: text })
-                this.setState({ text })
-                }
+      <SearchBar
+        lightTheme
+        containerStyle={styles.searchBarInner}
+        inputStyle={styles.searchBar}
+        onChangeText={
+            (text) => {
+              search({ search: text })
+              this.setState({ text })
               }
-            value={text}
-            placeholder={"Search"}
-          />
-        </View>
-      </View>
+            }
+        placeholder='Search'
+      />
     )
   }
 };
 
-SearchBar.propTypes = {
+SearchBarComponent.propTypes = {
   search: PropTypes.func.isRequired,
 }
 
-export default SearchBar;
+export default SearchBarComponent;
