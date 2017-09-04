@@ -11,9 +11,9 @@ import SidePanel from '../SidePanel';
 import { styles } from './stylesheet';
 
 const App = ({ dataflows, navigation: { navigate }, facets, search: doSearch }) => (
-  <SideMenu edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
+  <SideMenu autoClosing={false} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
     <View style={styles.app}>
-      <ScrollView>
+      <ScrollView style={styles.appScrollView}>
         <Card containerStyle={{padding: 0}}>
           {dataflows.map(dataflow =>
             <ListItem
