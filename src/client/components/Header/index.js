@@ -7,14 +7,14 @@ import { connect } from 'react-redux';
 import { styles } from './styleSheet';
 import { showSidePanel } from '../../actions/toggleSidePanel';
 
-const Header = ({ title, showSidePanel: doShowSidePanel }) => (
+const Header = ({ title, showSidePanel: doShowSidePanel, goBack }) => (
   <View style={styles.headerContainer}>
     <Icon
-      name='bars'
+      name={goBack ? 'arrow-left' : 'bars'}
       iconStyle={styles.burgerButton}
       type='font-awesome'
       color='rgb(79, 119, 255)'
-      onPress={() => doShowSidePanel()}
+      onPress={() => (goBack) ? goBack() : doShowSidePanel()}
     />
     <Text h5 style={styles.headerTitle} >{title}</Text>
     <Icon
