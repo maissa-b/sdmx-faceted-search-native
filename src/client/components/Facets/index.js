@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { compose, filter, map } from 'ramda';
 import { CATEGORY, DIMENSION } from '../../dataflows';
+import { onlyUpdateForKeys } from 'recompose';
 import Category from './category';
 import Dimension from './dimension';
 import { styles } from './styleSheet';
@@ -33,4 +34,6 @@ Facets.propTypes = {
   search: PropTypes.func,
 };
 
-export default Facets;
+const enhance = onlyUpdateForKeys(['facets']);
+
+export default enhance(Facets);
