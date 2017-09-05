@@ -7,15 +7,18 @@ import { Card, ListItem, Button } from 'react-native-elements'
 import { View, ScrollView } from 'react-native';
 import { search } from '../../actions/dataflows';
 import { getFacets } from '../../selectors';
+import ResultInfo from '../../components/ResultInfo';
 import SidePanel from '../SidePanel';
 import EmptySearch from '../EmptySearch';
 import { styles } from './stylesheet';
 
-const App = ({ dataflows, navigation: { navigate }, facets, search: doSearch, searchData }) => (
-  <SideMenu autoClosing={false} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
+
+const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, search: doSearch, searchInfo }) => (
+  <SideMenu isOpen={sidePanelIsVisible} autoClosing={false} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
     <View style={styles.app}>
       <ScrollView style={styles.appScrollView}>
-        <Card containerStyle={{padding: 0}}>
+        <ResultInfo searchInfo={searchInfo}/>
+        <Card style={styles.dataflows} containerStyle={{padding: 0}}>
           {dataflows.map(dataflow =>
             <ListItem
               onPress={() => navigate('Detail', { dataflow })}
@@ -36,6 +39,8 @@ const mapStateToProps = state => ({
   dataflows: state.dataflows,
   searchData: state.search,
   facets: getFacets(state),
+  searchInfo: state.search,
+  sidePanelIsVisible: state.toggleSidePanel,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
@@ -43,6 +48,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 App.propTypes = {
   dataflows: PropTypes.array.isRequired,
   navigation: PropTypes.object,
+  sidePanelIsVisible: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

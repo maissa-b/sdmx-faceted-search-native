@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     borderColor: 'rgb(200,200,200)',
-    borderWidth: 1,
+    marginTop:0,
   },
   card: {
     display: 'flex',
@@ -15,5 +15,11 @@ export const styles = StyleSheet.create({
   },
   appScrollView: {
     backgroundColor: 'white',
+    display: 'flex',
+    flex: 1,
   },
+  dataflows: {
+    display: 'flex',
+    alignSelf: 'stretch',
+  }
 });

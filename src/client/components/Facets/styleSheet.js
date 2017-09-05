@@ -2,21 +2,38 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   facets: {
+    display: 'flex',
+    flexDirection: 'column',
     backgroundColor: 'white',
-    margin: 'auto',
-    width:190,
+    alignSelf: 'stretch',
     borderRadius: 2,
     marginBottom: 12,
-    paddingBottom: 4,
     shadowColor: 'rgb(25,25,25)',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
+    paddingBottom: 8,
+    borderColor: 'rgb(200,200,200)',
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  facetsDimension: {
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: 'white',
+    alignSelf: 'stretch',
+    borderRadius: 2,
+    marginBottom: 12,
+    shadowColor: 'rgb(25,25,25)',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    paddingBottom: 8,
     borderColor: 'rgb(200,200,200)',
     borderWidth: StyleSheet.hairlineWidth,
   },
   facetHeader: {
     display: 'flex',
+    alignSelf: 'stretch',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -28,38 +45,45 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
-    borderBottomColor: 'rgb(230,230,230)',
+    borderBottomColor: 'rgb(200,200,200)',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    marginBottom: 3,
   },
   name: {
     color: 'rgb(75, 75, 75)',
     marginLeft: 5,
     fontSize: 13,
   },
-  checkBox: {
-    display: 'flex',
-    flex: 1,
-    padding: 5,
-    paddingLeft: 8,
-  },
   icon: {
     width:12,
     height:12,
   },
-  label: {
+  categoryLabel: {
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'row',
+    borderWidth: 0,
+    height:20,
     paddingLeft: 8,
-    marginTop:5,
-    marginBottom:5,
+    backgroundColor: 'white',
+  },
+  dimensionLabel: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingLeft: 0,
+    marginBottom:0,
+    borderWidth: 0,
+    height:8,
+    backgroundColor: 'transparent',
   },
   labelText:
   {
     color: 'rgb(75, 75, 75)',
     fontSize: 10,
+    fontWeight: 'normal',
   },
   labelIconContainer: {
     display: 'flex',
@@ -73,10 +97,13 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'stretch',
+  },
+  listItem: {
+    display: 'flex',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    height:30,
+    padding:0,
   }
 });
-
-export const checkBoxTextStyle = {
-  color: 'rgb(75, 75, 75)',
-  fontSize: 10,
-}
