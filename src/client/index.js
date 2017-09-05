@@ -13,6 +13,7 @@ const initialState = {
   },
   intl: {
     language: 'en',
+    locale: 'en',
   },
   dataflows: [],
   facets: {},

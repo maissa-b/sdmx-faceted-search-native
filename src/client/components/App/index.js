@@ -9,7 +9,9 @@ import { search } from '../../actions/dataflows';
 import { getFacets } from '../../selectors';
 import ResultInfo from '../../components/ResultInfo';
 import SidePanel from '../SidePanel';
+import EmptySearch from '../EmptySearch';
 import { styles } from './stylesheet';
+
 
 const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, search: doSearch, searchInfo }) => (
   <SideMenu isOpen={sidePanelIsVisible} autoClosing={false} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
@@ -24,6 +26,7 @@ const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, 
               title={dataflow.name[0]}
               subtitle={dataflow.description[0]} 
             />)}
+            {(!searchData.numFound || searchData.numFound === 0) && <EmptySearch />}
         </Card>
       </ScrollView>
     </View>
@@ -34,6 +37,7 @@ const actions = { search };
 
 const mapStateToProps = state => ({
   dataflows: state.dataflows,
+  searchData: state.search,
   facets: getFacets(state),
   searchInfo: state.search,
   sidePanelIsVisible: state.toggleSidePanel,
