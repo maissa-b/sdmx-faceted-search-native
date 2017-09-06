@@ -30,7 +30,7 @@ store.dispatch(loadConfig());
 
 const Root = () => (
   <Provider store={store}>
-    <Navigator />
+      <Navigator />
   </Provider>
 );
 

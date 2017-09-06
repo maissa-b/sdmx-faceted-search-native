@@ -7,10 +7,11 @@ import { Card, ListItem, Button } from 'react-native-elements'
 import { View, ScrollView, Alert } from 'react-native';
 import { search } from '../../actions/dataflows';
 import { getFacets } from '../../selectors';
+import { onlyUpdateForKeys } from 'recompose';
+import { compose } from 'recompose';
 import ResultInfo from '../../components/ResultInfo';
 import SidePanel from '../SidePanel';
-import EmptySearch from '../EmptySearch';
-import ErrorMessage from '../ErrorMessage';
+import Dataflows from '../Dataflows';
 import { styles } from './stylesheet';
 
 const SearchResults = ({ dataflows, navigate }) => (
@@ -27,12 +28,13 @@ const SearchResults = ({ dataflows, navigate }) => (
   </View>
 );
 
-const Container = ({ sidePanelIsVisible, dataflows, navigate, facets, doSearch, searchInfo }) => (
-  <SideMenu isOpen={sidePanelIsVisible} autoClosing={false} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
+
+const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, search: doSearch, searchInfo }) => (
+  <SideMenu isOpen={sidePanelIsVisible} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
     <View style={styles.app}>
       <ScrollView style={styles.appScrollView}>
-        <ResultInfo searchInfo={searchInfo} />
-        {!searchInfo.numFound ? <EmptySearch /> : <SearchResults navigate={navigate} dataflows={dataflows} />}
+        <ResultInfo numFound={searchInfo.numFound} searchValue={searchInfo.searchValue}/>
+        <Dataflows dataflows={dataflows} navigate={navigate} searchInfo={searchInfo}/>
       </ScrollView>
     </View>
   </SideMenu>
@@ -85,4 +87,9 @@ SearchResults.propTypes = {
   navigate: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const enhance = compose (
+  connect(mapStateToProps, mapDispatchToProps),
+  onlyUpdateForKeys(['dataflows', 'sidePanelIsVisible', 'facets', 'searchInfo'])
+)
+
+export default enhance(App);
