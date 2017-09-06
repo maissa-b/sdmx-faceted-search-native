@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, ListItem } from 'react-native-elements'
+import { Card, ListItem, Text } from 'react-native-elements'
 import { styles } from './styleSheet';
 import { onlyUpdateForKeys } from 'recompose';
 import EmptySearch from '../EmptySearch';

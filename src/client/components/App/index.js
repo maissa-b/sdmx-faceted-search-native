@@ -25,6 +25,12 @@ const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, 
         <ScrollView style={styles.appScrollView}>
           <ResultInfo numFound={searchInfo.numFound} searchValue={searchInfo.searchValue}/>
           <Dataflows dataflows={dataflows} navigate={navigate} searchInfo={searchInfo}/>
+          {searchInfo.numFound && <Button
+            onPress={() => console.log('load more')}
+            title="More"
+            color="rgb(79, 119, 255)"
+            accessibilityLabel="More"
+          />}
         </ScrollView>
       </View>
     </SideMenu>
@@ -48,13 +54,6 @@ App.propTypes = {
   navigation: PropTypes.object,
   sidePanelIsVisible: PropTypes.bool.isRequired,
   message: PropTypes.object,
-};
-
-Container.propTypes = {
-  dataflows: PropTypes.array.isRequired,
-  navigate: PropTypes.func.isRequired,
-  sidePanelIsVisible: PropTypes.bool.isRequired,
-  doSearch: PropTypes.func.isRequired,
 };
 
 const enhance = compose (
