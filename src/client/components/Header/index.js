@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { styles } from './styleSheet';
 import { showSidePanel } from '../../actions/toggleSidePanel';
 
-const Header = ({ title, showSidePanel: doShowSidePanel, setLocale: doSetLocale, langs, intl = {}}) => (
+const Header = ({ title, goBack, showSidePanel: doShowSidePanel, setLocale: doSetLocale, langs, intl = {}}) => (
   <View style={styles.headerContainer}>
     <Icon
       name={goBack ? 'arrow-left' : 'bars'}
@@ -37,6 +37,7 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   langs: PropTypes.array,
   currentLanguage: PropTypes.string,
+  goBack: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
