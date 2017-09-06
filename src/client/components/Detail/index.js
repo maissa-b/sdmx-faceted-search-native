@@ -4,8 +4,8 @@ import { View, Text, ScrollView } from 'react-native';
 import { styles } from './stylesheet';
 
 const Detail = ({ navigation: { state: { params: { dataflow } } } }) => (
-  <ScrollView>
-    <View style={styles.detail}>
+  <View style={styles.detail}>
+    <ScrollView>
       <Text style={styles.detail_title}>{`${dataflow.name[0]} :`}</Text>
       <View>
         <View style={styles.detail_content}>
@@ -49,8 +49,8 @@ const Detail = ({ navigation: { state: { params: { dataflow } } } }) => (
           </View>
         </View>
       </View>
-    </View>
-  </ScrollView>
+    </ScrollView>
+  </View>
 );
 
 export default Detail;

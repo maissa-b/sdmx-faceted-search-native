@@ -14,8 +14,9 @@ export const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   empty_search_container: {
-    fontSize: 10,
     justifyContent: 'space-between',
-
+  },
+  empty_search_info: {
+    fontSize: 10,
   },
 });
