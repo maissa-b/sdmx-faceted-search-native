@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { styles } from './styleSheet';
 import { showSidePanel } from '../../actions/toggleSidePanel';
 
-const Header = ({ title, showSidePanel: doShowSidePanel, setLocale: doSetLocale, langs, intl = {}}) => (
+const Header = ({ goBack, title, showSidePanel: doShowSidePanel, setLocale: doSetLocale, langs, intl = {}}) => (
   <View style={styles.headerContainer}>
     <Icon
       name={goBack ? 'arrow-left' : 'bars'}

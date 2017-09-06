@@ -40,7 +40,7 @@ const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, 
   </SideMenu>
 )
 
-const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, search: doSearch, searchInfo, message }) => {
+/*const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, search: doSearch, searchInfo, message }) => {
   if (message.header) {
     return <ErrorMessage message={message} navigate={navigate} />
   }
@@ -54,7 +54,7 @@ const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, 
       searchInfo={searchInfo}
     />
   )
-};
+};*/
 
 const actions = { search };
 
@@ -75,12 +75,12 @@ App.propTypes = {
   message: PropTypes.object,
 };
 
-Container.propTypes = {
-  dataflows: PropTypes.array.isRequired,
-  navigate: PropTypes.func.isRequired,
-  sidePanelIsVisible: PropTypes.bool.isRequired,
-  doSearch: PropTypes.func.isRequired,
-};
+// Container.propTypes = {
+//   dataflows: PropTypes.array.isRequired,
+//   navigate: PropTypes.func.isRequired,
+//   sidePanelIsVisible: PropTypes.bool.isRequired,
+//   doSearch: PropTypes.func.isRequired,
+// };
 
 SearchResults.propTypes = {
   dataflows: PropTypes.array.isRequired,
