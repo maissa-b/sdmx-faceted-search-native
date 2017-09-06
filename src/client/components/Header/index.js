@@ -23,6 +23,14 @@ const Header = ({ title, goBack, showSidePanel: doShowSidePanel, setLocale: doSe
   </View>
 )
 
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  goBack: PropTypes.func,
+  showSidePanel: PropTypes.func,
+  setLocale: PropTypes.func.isRequired,
+  langs: PropTypes.array,
+};
+
 const actions = { showSidePanel, setLocale };
 
 const mapStateToProps = state => ({
@@ -31,13 +39,5 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
-
-Header.propTypes = {
-  setLocale: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  langs: PropTypes.array,
-  currentLanguage: PropTypes.string,
-  goBack: PropTypes.func,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
