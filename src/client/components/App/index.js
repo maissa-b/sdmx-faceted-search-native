@@ -3,31 +3,24 @@ import PropTypes from 'prop-types';
 import SideMenu from 'react-native-side-menu';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Card, ListItem, Button } from 'react-native-elements'
+import { Button } from 'react-native-elements'
 import { View, ScrollView } from 'react-native';
 import { search } from '../../actions/dataflows';
 import { getFacets } from '../../selectors';
+import { onlyUpdateForKeys } from 'recompose';
+import { compose } from 'recompose';
 import ResultInfo from '../../components/ResultInfo';
 import SidePanel from '../SidePanel';
-import EmptySearch from '../EmptySearch';
+import Dataflows from '../Dataflows';
 import { styles } from './stylesheet';
 
 
 const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, search: doSearch, searchInfo }) => (
-  <SideMenu isOpen={sidePanelIsVisible} autoClosing={false} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
+  <SideMenu isOpen={sidePanelIsVisible} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
     <View style={styles.app}>
       <ScrollView style={styles.appScrollView}>
-        <ResultInfo searchInfo={searchInfo}/>
-        <Card style={styles.dataflows} containerStyle={{padding: 0}}>
-          {dataflows.map(dataflow =>
-            <ListItem
-              onPress={() => navigate('Detail', { dataflow })}
-              key={dataflow.id}
-              title={dataflow.name[0]}
-              subtitle={dataflow.description[0]} 
-            />)}
-            {(!searchData.numFound || searchData.numFound === 0) && <EmptySearch />}
-        </Card>
+        <ResultInfo numFound={searchInfo.numFound} searchValue={searchInfo.searchValue}/>
+        <Dataflows dataflows={dataflows} navigate={navigate} searchInfo={searchInfo}/>
       </ScrollView>
     </View>
   </SideMenu>
@@ -51,4 +44,9 @@ App.propTypes = {
   sidePanelIsVisible: PropTypes.bool.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const enhance = compose (
+  connect(mapStateToProps, mapDispatchToProps),
+  onlyUpdateForKeys(['dataflows', 'sidePanelIsVisible', 'facets', 'searchInfo'])
+)
+
+export default enhance(App);

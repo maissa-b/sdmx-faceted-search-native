@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
 import { Icon } from 'react-native-elements';
 import { styles } from './styleSheet';
 
-const ResultInfo = ({ searchInfo }) => (
+const ResultInfo = ({ numFound = 0, searchValue }) => (
   <View style={styles.resultInfoContainer}>
     <Icon
       name='page-search'
@@ -13,12 +14,15 @@ const ResultInfo = ({ searchInfo }) => (
       type='foundation'
       color='rgb(79, 119, 255)'
     />
-    {searchInfo.numFound && <Text style={styles.resultInfoText}>{searchInfo.numFound} Dataflows found</Text>}
+    <Text style={styles.resultInfoText}>{numFound} Dataflows found for {searchValue}</Text>
   </View>
 );
 
 ResultInfo.propTypes = {
-  searchInfo: PropTypes.object,
+  numFound: PropTypes.number,
+  searchValue: PropTypes.string.isRequired,
 }
 
-export default ResultInfo;
+const enhance = onlyUpdateForKeys(['numFound', 'searchValue']);
+
+export default enhance(ResultInfo);

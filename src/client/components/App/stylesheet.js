@@ -18,8 +18,4 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
   },
-  dataflows: {
-    display: 'flex',
-    alignSelf: 'stretch',
-  }
 });

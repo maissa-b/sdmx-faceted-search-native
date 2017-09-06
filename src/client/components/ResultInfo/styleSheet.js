@@ -16,4 +16,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'normal',
     marginLeft: 10,
   },
+  searchInfoIcon: {
+    marginRight:5,
+  }
 });

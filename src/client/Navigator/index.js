@@ -6,7 +6,7 @@ import Header from '../components/Header';
 
 const Navigator = StackNavigator({
     App: { screen: App, navigationOptions: { header: (<Header title="SDMX Faceted Search"/>) } },
-    Detail: { screen: Detail, navigationOptions: { title: 'Detail', gesturesEnabled: true } },
+    Detail: { screen: Detail, navigationOptions: { title: 'Detail'   } },
 });
 
 export default Navigator;
