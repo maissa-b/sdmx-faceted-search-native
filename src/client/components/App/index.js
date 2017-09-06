@@ -19,7 +19,6 @@ const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, 
   if (message.header) {
     return <ErrorMessage message={message} navigate={navigate} />
   }
-  console.log(message);
   return (
     <SideMenu isOpen={sidePanelIsVisible} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
       <View style={styles.app}>
