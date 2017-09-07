@@ -11,16 +11,23 @@ import ResultInfo from '../ResultInfo';
 import SidePanel from '../SidePanel';
 import Alert from '../Alert';
 import Dataflows from '../Dataflows';
+import Pager from '../Pager';
 import { styles } from './stylesheet';
 
-
 const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, search: doSearch, searchInfo, message }) => (
-  <SideMenu isOpen={sidePanelIsVisible} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
-    <Alert message={message} />
+  <SideMenu isOpen={sidePanelIsVisible} autoClose={false} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
     <View style={styles.app}>
+      <Alert message={message} />
       <ScrollView style={styles.appScrollView}>
-        <ResultInfo numFound={searchInfo.numFound} searchValue={searchInfo.searchValue}/>
-        <Dataflows dataflows={dataflows} navigate={navigate} searchInfo={searchInfo}/>
+        <ResultInfo numFound={searchInfo.numFound} searchValue={searchInfo.searchValue} />
+        <Pager
+          searchValue={searchInfo.searchValue}
+          start={searchInfo.start}
+          rows={searchInfo.rows}
+          numFound={searchInfo.numFound}
+          search={doSearch}
+        />
+        <Dataflows dataflows={dataflows} navigate={navigate} searchInfo={searchInfo} />
       </ScrollView>
     </View>
   </SideMenu>

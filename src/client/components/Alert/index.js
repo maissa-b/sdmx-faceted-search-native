@@ -9,7 +9,7 @@ class Alert extends React.Component {
   componentDidMount() {
     this.showToaster = (header, label) =>
       Toast.show(
-        <Text style={styles.errorHeader}>{`${header} : \n`}<Text style={styles.errorLabel}>{label}</Text></Text>,
+        <Text style={styles.errorHeader}>{` ${header} : `}<Text style={styles.errorLabel}>{`${label} `}</Text></Text>,
         {
           animation: true,
           duration: Toast.durations.LONG,

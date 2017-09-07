@@ -1,4 +1,4 @@
-import { map, prop, merge } from 'ramda';
+import { map, prop } from 'ramda';
 import { requestJson } from '../utils';
 import { alert } from './message';
 
@@ -19,10 +19,10 @@ const dataflowsLoaded = ({ dataflows = [], numFound, start, facets } = {}) => ({
 });
 
 export const search = (params, start = 0) => (dispatch, getState) => {
-  dispatch({ type: SEARCH, ...params });
+  dispatch({ type: SEARCH, params: Object.assign({}, {params}) });
   const { search: { rows, searchValue }, facets, intl: { locale } } = getState();
   const baseQuery = { search: searchValue, facets: map(prop('value'), facets) };
-  const query = merge(params, baseQuery);
+  const query = Object.assign({}, {params}, baseQuery);
   const body = { ...query, start, rows, lang: locale };
   requestJson({ method: 'post', url: '/api/search', body })
   .then(data => dispatch(dataflowsLoaded(data)))
