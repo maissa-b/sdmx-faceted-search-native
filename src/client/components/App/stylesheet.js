@@ -18,5 +18,4 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
   },
-
 });

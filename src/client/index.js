@@ -3,7 +3,9 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 import { loadConfig } from './actions/config';
 import params from '../params';
+import ConnectedIntlProvider from './components/ConnectedIntlProvider';
 import Navigator from './Navigator';
+import messages from './messages.json';
 
 const { search: { rows = 10 } } = params;
 
@@ -14,6 +16,7 @@ const initialState = {
   intl: {
     language: 'en',
     locale: 'en',
+    messages,
   },
   dataflows: [],
   facets: {},
@@ -30,7 +33,9 @@ store.dispatch(loadConfig());
 
 const Root = () => (
   <Provider store={store}>
+    <ConnectedIntlProvider>
       <Navigator />
+    </ConnectedIntlProvider>
   </Provider>
 );
 

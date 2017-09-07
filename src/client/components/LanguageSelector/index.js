@@ -29,10 +29,15 @@ class LanguageSelector extends Component {
           onRequestClose={() => {alert("Modal has been closed.")}}
         >
           <View style={styles.modalContainer}>
-            {langs.map(lang => 
-                <TouchableOpacity key={lang} activeOpacity={1} style={styles.langButton} onPress={() => {setLocale(lang); this.setModalVisible(!this.state.modalVisible)}}>
-                  <Text style={styles.langButtonText}>{lang}</Text>
-                </TouchableOpacity>
+
+            {langs.map((lang, index) => 
+                <Button
+                  key={index}
+                  onPress={() => {setLocale(lang); this.setModalVisible(!this.state.modalVisible)}}
+                  title={lang}
+                  color="rgb(75,75,75)"
+                  accessibilityLabel="Close"
+                />
               )
             }
             <TouchableOpacity style={styles.langButton} onPress={() => {this.setModalVisible(!this.state.modalVisible)}}>

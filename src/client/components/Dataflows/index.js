@@ -1,21 +1,25 @@
 import React from 'react';
-import { Card, ListItem, Text } from 'react-native-elements'
-import { styles } from './styleSheet';
-import { onlyUpdateForKeys } from 'recompose';
-import EmptySearch from '../EmptySearch';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
+import { Card, ListItem } from 'react-native-elements'
+import { onlyUpdateForKeys } from 'recompose';
+import { styles } from './styleSheet';
+import EmptySearch from '../EmptySearch';
 
 const Dataflows = ({ dataflows, searchInfo, navigate }) => (
-  <Card style={styles.dataflows} containerStyle={{padding: 0}}>
-    {dataflows.map(dataflow =>
-      <ListItem
-        onPress={() => navigate('Detail', { dataflow })}
-        key={dataflow.id}
-        title={dataflow.name[0]}
-        subtitle={dataflow.description[0]} 
-      />)}
-      {!searchInfo.numFound && <EmptySearch />}
-  </Card>
+  <View>
+    {!searchInfo.numFound ? <EmptySearch /> : (
+      <Card style={styles.dataflows} containerStyle={{padding: 0}}>
+        {dataflows.map(dataflow =>
+          <ListItem
+            onPress={() => navigate('Detail', { dataflow })}
+            key={dataflow.id}
+            title={dataflow.name[0]}
+            subtitle={dataflow.description[0]} 
+          />)}
+      </Card> 
+    )}
+  </View>
 );
 
 Dataflows.propTypes = {
