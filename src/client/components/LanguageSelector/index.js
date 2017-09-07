@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, View, Text, Button } from 'react-native'
+import { Modal, View, Text, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
 import { styles } from './styleSheet';
@@ -24,11 +24,12 @@ class LanguageSelector extends Component {
         />
         <Modal
           animationType="fade"
-          transparent={false}
+          transparent={true}
           visible={this.state.modalVisible}
           onRequestClose={() => {alert("Modal has been closed.")}}
         >
           <View style={styles.modalContainer}>
+
             {langs.map((lang, index) => 
                 <Button
                   key={index}
@@ -39,12 +40,9 @@ class LanguageSelector extends Component {
                 />
               )
             }
-            <Button
-              onPress={() => {this.setModalVisible(!this.state.modalVisible)}}
-              title="Close"
-              color="rgb(75,75,75)"
-              accessibilityLabel="Close"
-            />
+            <TouchableOpacity style={styles.langButton} onPress={() => {this.setModalVisible(!this.state.modalVisible)}}>
+              <Text style={styles.langButtonText}>Close</Text>
+            </TouchableOpacity>
           </View>
         </Modal>
       </View>
