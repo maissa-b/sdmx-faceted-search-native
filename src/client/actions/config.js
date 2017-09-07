@@ -1,6 +1,6 @@
 import { equals, find, propOr } from 'ramda';
 import { requestJson } from '../utils';
-import { setLocale } from './intl';
+import { setLocale, SETLOCALE } from './intl';
 import { alert } from './message';
 
 export const CONFIGLOADED = 'CONFIGLOADED';
@@ -15,4 +15,7 @@ export const loadConfig = () => (dispatch, getState) => requestJson({ method: 'g
   dispatch(setLocale(language));
   dispatch(configLoaded(config));
 })
-.catch(() => dispatch(alert('Cannot load config')));
+.catch(() => {
+  dispatch({ type: SETLOCALE, locale: 'en' });
+  dispatch(alert('Cannot load config'));
+});

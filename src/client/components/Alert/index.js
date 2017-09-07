@@ -7,9 +7,9 @@ import { styles } from './stylesheet';
 
 class Alert extends React.Component {
   componentDidMount() {
-    this.toaster = (header, label) =>
+    this.showToaster = (header, label) =>
       Toast.show(
-        <Text style={styles.errorHeader}>{`${header} : \n`}<Text style={styles.errorLabel} >{label}</Text></Text>,
+        <Text style={styles.errorHeader}>{`${header} : \n`}<Text style={styles.errorLabel}>{label}</Text></Text>,
         {
           animation: true,
           duration: Toast.durations.LONG,
@@ -23,9 +23,7 @@ class Alert extends React.Component {
     const { id } = this.props.message;
     if (id !== nextProps.message.id) {
       const { message: { header, label } } = nextProps;
-      console.log('header: ', header);
-      console.log('label: ', label);
-      this.toaster(header, label);
+      this.showToaster(header, label);
     }
   }
   
