@@ -15,7 +15,6 @@ const initialState = {
   },
   intl: {
     language: 'en',
-    locale: 'en',
     messages,
   },
   dataflows: [],
