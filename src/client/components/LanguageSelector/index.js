@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, View, Text, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types';
-import { Icon } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import { styles } from './styleSheet';
 
 class LanguageSelector extends Component {
