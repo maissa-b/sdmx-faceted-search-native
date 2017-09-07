@@ -1,10 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  error_message: {
+  fetching: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'center',
-  },
+    alignItems: 'center',
+  }, 
 });

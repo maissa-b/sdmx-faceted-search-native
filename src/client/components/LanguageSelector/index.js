@@ -29,8 +29,9 @@ class LanguageSelector extends Component {
           onRequestClose={() => {alert("Modal has been closed.")}}
         >
           <View style={styles.modalContainer}>
-            {langs.map(lang => 
+            {langs.map((lang, index) => 
                 <Button
+                  key={index}
                   onPress={() => {setLocale(lang); this.setModalVisible(!this.state.modalVisible)}}
                   title={lang}
                   color="rgb(75,75,75)"

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
 import { View, Text, ScrollView } from 'react-native';
 
 import { styles } from './stylesheet';
@@ -53,4 +55,8 @@ const Detail = ({ navigation: { state: { params: { dataflow } } } }) => (
   </View>
 );
 
-export default Detail;
+Detail.propTypes = {
+  navigation: PropTypes.object.isRequired,
+}
+
+export default onlyUpdateForKeys(['dataflow'])(Detail);
