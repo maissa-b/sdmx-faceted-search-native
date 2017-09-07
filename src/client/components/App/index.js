@@ -13,6 +13,7 @@ import Alert from '../Alert';
 import Dataflows from '../Dataflows';
 import { styles } from './stylesheet';
 
+
 const App = ({ sidePanelIsVisible, dataflows, navigation: { navigate }, facets, search: doSearch, searchInfo, message }) => (
   <SideMenu isOpen={sidePanelIsVisible} edgeHitWidth={300} menu={<SidePanel facets={facets} search={doSearch} />}>
     <Alert message={message} />

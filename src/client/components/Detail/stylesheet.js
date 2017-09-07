@@ -5,20 +5,44 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'space-between',
-    padding: 15,
   },
   detail_content: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    paddingBottom: 20,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    marginBottom: 10,
   },
   detail_title: {
-    color: '#4F77FF',
+    color: 'white',
     fontWeight: 'bold',
   },
-  detail_description: {
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
+  detail_key: {
+    color: 'rgb(79, 119, 255)',
   },
+  detail_value: {
+    alignSelf: 'flex-end',
+    color: 'rgb(65,65,65)'
+  },
+  detailScrollView: {
+    padding: 15,
+  },
+  detailtitleContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgb(79, 119, 255)',
+    padding:10,
+    marginBottom: 10,
+    borderRadius: 4,
+    shadowColor: 'rgb(55,55,55)',
+    shadowOffset: { width: 1, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    borderBottomColor: 'rgb(220,220,220)',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  detailContainer: {
+    display: 'flex',
+    marginBottom: 30,
+  }
 });
